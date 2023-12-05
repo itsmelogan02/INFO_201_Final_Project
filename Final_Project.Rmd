@@ -1,0 +1,9 @@
+---
+title: "Final Project INFO201"
+output: html_document
+date: "2023-12-05"
+---
+
+```
+this is a sample file for all user input. 
+```
