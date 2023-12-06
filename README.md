@@ -10,4 +10,8 @@ concerned about the environmental pollution in different regions. Specifically, 
 about the pollution disparity between different countries and regions can look to the findings of this project for information. 
 For example, regional organizations focused on improving and advocating for more sustainability measures could use this information 
 to support their cause, such as placing attainable goals based on comparing with data from similar regions.
-```
+![air quality data](air_quality_.png)
+
+
+
+
