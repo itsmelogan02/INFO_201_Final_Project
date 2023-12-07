@@ -1,0 +1,22 @@
+---
+title: "Untitled"
+output: html_document
+date: "2023-12-07"
+---
+
+```
+**Data Source:** The original data sources for this dataset came from Kaggle – the air quality and 
+pollution data came from the dataset https://www.kaggle.com/code/jackjaehwankim/worldwide-pollution-eda/input 
+and the median and average salary data came from the dataset https://www.kaggle.com/datasets/zedataweaver/global-salary-data. 
+Both of these datasets are available for public use as long as it’s personal and non-commercial. 
+**Variables:** The original datasets included additional variables, but the ones included here are country, 
+median salary, average salary, air quality, and water pollution. The median and average salary are both 
+accounted for in U.S. dollars, not accounting for cost-of-living adjustments. It is also important to 
+note that air quality ranges from 0 (bad quality) to 100 (good quality) while water pollution ranges 
+from 0 (no pollution) to 100 (heavy pollution).
+**Summary Statistics:** Each of the 163 rows in this dataset represents a country and observations related 
+to it – the median and average salary in USD and the level of average pollution. There are 5 columns in the 
+dataset, each corresponding to the country name and one of the categories mentioned above. There are no missing 
+values because we wanted to ensure both salary and pollution data are available for the users.
+
+```
