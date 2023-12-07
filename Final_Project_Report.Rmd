@@ -91,5 +91,62 @@ thoughts of higher median salary having lower emissions.
 ```
 ![data set of pollutions](result data set example.png)
 
+```
+Findings:
+Looking at the meaning of our results from the dataset, we see similar trends developing with 
+relations of pollution vs. salary of each country. Looking at our dataset, we see on our trend
+line comparing median salary and air quality, we see there is an influx of or result where the 
+median salary from 0-2500 (USD currency) for a particular country resulted in a higher density
+of air pollution. Many of the points were towards the bottom with the median being at the middle 
+(25-75 percent pollution) but see that the increasing median salary resulting in better air
+quality. This similar trend for average salary shows that pollution is associated with the salary
+data from our dataset. Reflecting back to our research questions, we see that some of our questions
+are answered. For the first research question, we see that predictions of salary being associated 
+with pollution is a good baseline to see how a country is doing. We see in our trend lines and in 
+our data that countries that are considered third world compared to first world countries have a 
+huge differentiation with levels of pollution and average salary. Secondly, water and air pollution
+have similar trend lines with some data overlapping with each other. This is not always correct, 
+but we see a correlation between the water and air pollution proportion to the country’s salary. 
+Looking at the last plot, we see that our data is very scattered and messy. With messy data when
+you try to plot so much data together. Comparing air pollution as the x and water as y coordinate,
+we see it is hard to analyze the data given how many plots we have. Lastly, we see for the last
+research question that we cannot accurately predict or say that neighboring countries have similar 
+pollution levels. For example, we see that Brazil has a yellow air quality meaning that the overall
+air pollution levels are low resulting in higher air quality. Looking at its neighbors, we see that
+Venezuela has significantly higher levels of pollution. These statistics and plotting globally makes
+our last research question not possible to predict because it is dependent on the country’s pollution
+levels, not on neighboring countries' air pollution levels. We do see salary correlating with pollution
+levels which proves the other research questions. For directions for future gathering of our work, 
+we hope that there will be more datasets we can group together and analyze such as other forms of 
+pollution and see if salary plays an important factor in determining the overall pollution levels. 
+Pollution is an important concept that requires many different forms of data in order for us to find
+solutions that drive innovation.
+```
 
+```
+Takeaway:
+In conclusion, global pollution is an important issue that affects all people. Pollution such as 
+air and quality affects everyone regardless of race, ethnicity, gender, and generation. We need
+to raise more awareness of the ongoing implications of this global health crisis as we eventually 
+will be at a point where our actions are irreversible. This starts with taking small steps towards
+reducing our footprint. From taking small steps such as recycling, to reusing our water bottles to
+reduce global pollution. We hoped after reading our dataset, looking at our graphs, and hearing our
+findings, you would become more educated in this topic such as pollution levels globally. We can see
+that there is a correlation with higher median salary per country is associated with lower pollution
+levels. Although this is true, we acknowledge that simply looking at median salary is not enough to 
+claim, “higher salary means less pollution for every case”. This is simply not true. We can see based
+on our data set; we see a relationship. Though, we must gather more datasets to find a better understanding 
+of how to better tackle this issue. We also acknowledge that there is a key contributor to pollution that 
+is not talked about or could be analyzed by using data science. This being the physical and emotional health 
+of individuals globally. Having read the articles mentioning exploitation of worker rights while trying to mine
+lithium in Africa, to current political environments such as wars. We cannot assume that the United States is 
+the best in the world for pollution. In those articles, there are workers being worked for pennies an hour, 
+creating immense air pollution which results in many countries within Africa to have alarming rates of pollution.
+We must talk about the political environment happening now and the past that leads to our results. Lastly, 
+we hoped you took away the importance of analyzing trends in our current topic with pollution and how salary 
+may play a role in pollution globally. From looking at the global salary dataset and seeing the increase in 
+salary not being proportional to other countries reflected through the plot charts, to the concurrent increasing
+pollution levels post industrial revolution. Hopefully today we can all start together to combat pollution for a better life for everyone.
+
+```
 
