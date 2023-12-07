@@ -1,0 +1,155 @@
+---
+Assignment: Final Project
+---
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+```
+
+## Load Datasets
+```{r}
+salary_data <- read_csv("data/salary_data.csv")
+pollution_data <- read_csv("data/cities_air_quality_water_pollution.18-10-2021.csv.xls")
+head(salary_data)
+head(pollution_data)
+```
+
+## Question 1: How does the level of pollution vary in regions with different levels of income? Can income predict pollution for a given area?
+
+## Pick out Columns We Need
+```{r}
+salary_data <- salary_data %>% 
+  select(country_name, median_salary, average_salary) %>% 
+  rename(country = country_name)
+
+pollution_data <- pollution_data %>% 
+  select(Country, AirQuality, WaterPollution) %>% 
+  rename(country = Country) %>% 
+  rename(air_quality = AirQuality) %>% 
+  rename(water_pollution = WaterPollution)
+
+head(salary_data)
+head(pollution_data)
+```
+
+## Adjust Pollution Data to 1 Per Country
+```{r}
+pollution_data <- pollution_data %>% 
+  drop_na(air_quality) %>% 
+  drop_na(water_pollution)
+
+pollution_data <- pollution_data %>% 
+  arrange(country) %>% 
+  group_by(country) %>% 
+  summarize(air_quality = mean(air_quality, na.rm = TRUE),
+            water_pollution = mean(water_pollution, na.rm = TRUE))
+head(pollution_data)
+```
+
+## Merge Datasets
+```{r}
+combined_data <- left_join(salary_data, pollution_data)
+
+num_nas <- combined_data %>% 
+  select(air_quality) %>% 
+  is.na() %>% 
+  sum() %>% 
+  print()
+
+combined_data <- left_join(salary_data, pollution_data) %>% 
+  drop_na(air_quality)
+combined_data
+```
+
+## Graph Relationship Between Salaries and Air Quality
+```{r}
+combined_data %>% 
+  select(median_salary, air_quality) %>% 
+  ggplot(aes(x = median_salary, y = air_quality, color = median_salary)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "darkgreen")  +
+  labs(x = "Median Salary",
+       y = "Air Quality",
+       title = "Relationship Between Median Salary and Air Quality")
+```
+
+```{r}
+combined_data %>% 
+  select(average_salary, air_quality) %>% 
+  ggplot(aes(x = average_salary, y = air_quality, color = average_salary)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "darkgreen") +
+  labs(x = "Average Salary",
+       y = "Air Quality",
+       title = "Relationship Between Average Salary and Air Quality")
+```
+
+## Graph Relationship Between Salaries and Water Pollution
+```{r}
+combined_data %>% 
+  select(median_salary, water_pollution) %>% 
+  ggplot(aes(x = median_salary, y = water_pollution, color = median_salary)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  labs(x = "Median Salary",
+       y = "Water Pollution",
+       title = "Relationship Between Median Salary and Level of Water Pollution")
+```
+
+```{r}
+combined_data %>% 
+  select(average_salary, water_pollution) %>% 
+  ggplot(aes(x = average_salary, y = water_pollution, color = average_salary)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  labs(x = "Average Salary",
+       y = "Water Pollution",
+       title = "Relationship Between Average Salary and Level of Water Pollution")
+```
+
+## Question 2: Do air pollution and water pollution always overlap? Is air pollution a good predictor of water pollution and vice versa?
+
+## Load Dataset
+```{r}
+pollution_data2 <- read_csv("data/cities_air_quality_water_pollution.18-10-2021.csv.xls")
+head(pollution_data2)
+```
+
+## Select Columns
+```{r}
+pollution_data2 <- pollution_data2 %>% 
+  select(AirQuality, WaterPollution) %>% 
+  rename(air_quality = AirQuality) %>% 
+  rename(water_pollution = WaterPollution) 
+head(pollution_data2)
+```
+
+## Filter Anomalies
+```{r}
+pollution_data2 <- pollution_data2 %>% 
+  drop_na(air_quality) %>% 
+  drop_na(water_pollution)
+
+Q1 <- quantile(pollution_data2$air_quality, 0.25)
+Q3 <- quantile(pollution_data2$air_quality, 0.75)
+IQR_value1 <- Q3 - Q1
+
+Q1 <- quantile(pollution_data2$water_pollution, 0.25)
+Q3 <- quantile(pollution_data2$water_pollution, 0.75)
+IQR_value2 <- Q3 - Q1
+```
+
+## Graph Their Relationship
+```{r}
+pollution_data2 %>% 
+  filter(air_quality > (Q1 - 1.5 * IQR_value1) & air_quality < (Q3 + 1.5 * IQR_value1),
+         water_pollution > (Q1 - 1.5 * IQR_value2) & water_pollution < (Q3 + 1.5 * IQR_value2)) %>% 
+  ggplot(aes(x = air_quality, y = water_pollution)) +
+  geom_smooth(method = "lm", se = FALSE, color = "darkred") +
+  geom_point() +
+  labs(x = "Air Quality", 
+       y = "Water Pollution", 
+       title = "Relationship Between Air Quality and Water Pollution")
+```
